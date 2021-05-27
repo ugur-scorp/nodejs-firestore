@@ -16,4 +16,12 @@
 // ** https://github.com/googleapis/gapic-generator-typescript **
 // ** All changes to this file may be overwritten. **
 
-export {FirestoreClient} from './firestore_client';
+
+/* eslint-disable node/no-missing-require, no-unused-vars */
+const firestore = require('@google-cloud/firestore');
+
+function main() {
+  const firestoreClient = new firestore.FirestoreClient();
+}
+
+main();
