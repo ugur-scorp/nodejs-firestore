@@ -494,7 +494,7 @@ describe('deserialize document', () => {
         .doc('collectionId/documentId')
         .get()
         .then(res => {
-          expect(res.get('moonLanding').toMillis()).to.equal(
+          expect(res.get('moonLanding').getTime()).to.equal(
             new Date('Jul 20 1969 20:18:00.123 UTC').getTime()
           );
         });

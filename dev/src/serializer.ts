@@ -235,7 +235,8 @@ export class Serializer {
         return proto.doubleValue;
       }
       case 'timestampValue': {
-        return Timestamp.fromProto(proto.timestampValue!);
+        const timestamp = Timestamp.fromProto(proto.timestampValue!);
+        return timestamp.toDate();
       }
       case 'referenceValue': {
         const resourcePath = QualifiedResourcePath.fromSlashSeparatedString(
