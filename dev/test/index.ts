@@ -272,12 +272,14 @@ const allSupportedTypesOutput = {
   negativeInfinityValue: -Infinity,
   objectValue: {foo: 'bar'},
   emptyObject: {},
-  dateValue: Firestore.Timestamp.fromDate(
-    new Date('Mar 18, 1985 08:20:00.123 GMT+0100 (CET)')
-  ),
-  timestampValue: Firestore.Timestamp.fromDate(
-    new Date('Mar 18, 1985 08:20:00.123 GMT+0100 (CET)')
-  ),
+  dateValue: new Date('Mar 18, 1985 08:20:00.123 GMT+0100 (CET)'),
+  timestampValue: new Date('Mar 18, 1985 08:20:00.123 GMT+0100 (CET)'),
+  // dateValue: Firestore.Timestamp.fromDate(
+  //   new Date('Mar 18, 1985 08:20:00.123 GMT+0100 (CET)')
+  // ),
+  // timestampValue: Firestore.Timestamp.fromDate(
+  //   new Date('Mar 18, 1985 08:20:00.123 GMT+0100 (CET)')
+  // ),
   pathValue: new Firestore.DocumentReference(
     {
       formattedName: DATABASE_ROOT,
@@ -742,7 +744,7 @@ describe('snapshot_() method', () => {
     expect(doc.exists).to.be.true;
     expect(doc.data()).to.deep.eq({
       a: bytesData,
-      b: Firestore.Timestamp.fromDate(new Date('1985-03-18T07:20:00.000Z')),
+      b: new Date('1985-03-18T07:20:00.000Z'), //Firestore.Timestamp.fromDate(new Date('1985-03-18T07:20:00.000Z')),
       c: bytesData,
     });
     expect(doc.createTime!.isEqual(new Firestore.Timestamp(1, 2000000))).to.be

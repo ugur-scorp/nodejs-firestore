@@ -477,6 +477,13 @@ describe('DocumentReference class', () => {
         );
         delete data.pathValue;
         delete allSupportedTypesObject.pathValue;
+
+        delete data.dateValue;
+        delete allSupportedTypesObject.dateValue;
+
+        delete data.zeroDateValue;
+        delete allSupportedTypesObject.zeroDateValue;
+
         expect(data).to.deep.equal(allSupportedTypesObject);
       });
   });
@@ -539,7 +546,7 @@ describe('DocumentReference class', () => {
       })
       .then(doc => {
         setTimestamp = doc.get('f');
-        expect(setTimestamp).to.be.an.instanceOf(Timestamp);
+        expect(setTimestamp).to.be.an.instanceOf(Date);
         expect(doc.data()).to.deep.equal({
           a: 'bar',
           b: {remove: 'bar'},
@@ -553,7 +560,7 @@ describe('DocumentReference class', () => {
       })
       .then(doc => {
         const updateTimestamp = doc.get('a');
-        expect(setTimestamp).to.be.an.instanceOf(Timestamp);
+        expect(setTimestamp).to.be.an.instanceOf(Date);
         expect(doc.data()).to.deep.equal({
           a: updateTimestamp,
           b: {c: updateTimestamp},
@@ -678,7 +685,7 @@ describe('DocumentReference class', () => {
       .then(() => ref.get())
       .then(doc => {
         const updateTimestamp = doc.get('c');
-        expect(updateTimestamp).to.be.an.instanceOf(Timestamp);
+        expect(updateTimestamp).to.be.an.instanceOf(Date);
         expect(doc.data()).to.deep.equal({
           a: 'b',
           c: updateTimestamp,
